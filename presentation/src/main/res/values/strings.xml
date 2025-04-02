@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">DemoCards</string>
+    <string name="nav_transactions">Transactions</string>
+    <string name="nav_cards">Cards</string>
+    <string name="nav_payments">Payments</string>
+    <string name="nav_statements">Statements</string>
+    <string name="nav_more">More</string>
+
+    <string name="card">Card</string>
+    <string name="cards">Cards</string>
+    <string name="card_details">Card Details</string>
+    <string name="card_name">Card Name</string>
+    <string name="card_number">Card Number</string>
+    <string name="card_exp_date">Exp Date</string>
+    <string name="card_cvv">CVV</string>
+    <string name="name_on_card">Name on Card</string>
+    <string name="card_name_required">Card Name*</string>
+    <string name="name_on_card_required">Name on Card*</string>
+    <string name="card_number_required">Card Number*</string>
+    <string name="card_cvv_required">Card Security Code*</string>
+    <string name="exp_date_required">Exp Date*</string>
+    <string name="my_cards">My Cards</string>
+    <string name="new_card">New Card</string>
+    <string name="add_card">Add Card</string>
+    <string name="field_required">This field is required</string>
+    <string name="copied">Copied</string>
+    <string name="something_wrong">Something wrong, please try again</string>
+    <string name="add_your_first_card">Add Your First Card</string>
+    <string name="add_card_desc">Add credit, debit ot store cards to make sure payments in apps.</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="select_expiry_date">Select Exp Date</string>
+    <string name="add_card_success">Add Card Successfully</string>
+</resources>

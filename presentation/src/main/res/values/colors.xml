@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="main_color">#1E3C3E</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="orange">#F9742A</color>
+    <color name="red">#FF0000</color>
+    <color name="placeholder">#B8B8B8</color>
+    <color name="disabled">#B8B8B8</color>
+    <color name="tab_item_active">@color/white</color>
+    <color name="tab_item_inactive">#73FFFFFF</color>
+</resources>

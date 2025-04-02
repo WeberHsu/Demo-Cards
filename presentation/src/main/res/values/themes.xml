@@ -1,0 +1,63 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Cards" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/main_color</item>
+    </style>
+
+    <style name="Theme.Cards" parent="Base.Theme.Cards">
+        <item name="colorPrimary">@color/main_color</item>
+        <item name="colorAccent">@color/main_color</item>
+    </style>
+
+    <style name="BottomNavActiveTextStyle" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BottomNavInactiveTextStyle" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="CustomBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemBackground">@null</item>
+    </style>
+
+    <style name="pickerview_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="pickerview_anim" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pickerview_in</item>
+        <item name="android:windowExitAnimation">@anim/pickerview_out</item>
+    </style>
+
+    <style name="transparentAlert" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="CardsDialog" parent="transparentAlert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="colorAccent">@color/main_color</item>
+        <item name="android:windowAnimationStyle">@style/TopPopupWindow</item>
+    </style>
+
+    <style name="TopPopupWindow" parent="Base.Widget.AppCompat.PopupWindow">
+        <item name="android:windowEnterAnimation">@anim/top_popup_window_in</item>
+        <item name="android:windowExitAnimation">@anim/top_popup_window_out</item>
+    </style>
+
+    <style name="CardsBottomDialog" parent="@style/CardsDialog">
+        <item name="android:windowEnterAnimation">@anim/bottom_popup_window_in</item>
+        <item name="android:windowExitAnimation">@anim/bottom_popup_window_out</item>
+    </style>
+
+
+</resources>

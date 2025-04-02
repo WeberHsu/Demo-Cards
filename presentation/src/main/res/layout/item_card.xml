@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutRoot"
+    android:layout_width="match_parent"
+    android:layout_height="220dp"
+    android:background="@drawable/bg_card_detail_section"
+    android:padding="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgActive"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_active"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/txtCardName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/card_name"
+            android:textColor="@color/white"
+            android:layout_marginStart="8dp"
+            android:includeFontPadding="false"
+            android:textSize="14sp"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgActive"
+            app:layout_constraintBottom_toTopOf="@+id/txtPhysicalCardNumber"/>
+
+        <TextView
+            android:id="@+id/txtPhysicalCardNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Physical •• 1234"
+            android:textColor="#B3FFFFFF"
+            android:includeFontPadding="false"
+            android:textSize="10sp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@+id/imgActive"
+            app:layout_constraintTop_toBottomOf="@+id/txtCardName"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/cardLogo"
+        android:layout_width="78dp"
+        android:layout_height="14dp"
+        android:src="@mipmap/logo_white"
+        android:contentDescription="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/layoutInfo"
+        app:layout_constraintBottom_toBottomOf="@+id/layoutInfo"/>
+
+
+    <TextView
+        android:id="@+id/txtCardNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="•• 1234"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:layout_marginTop="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/layoutInfo" />
+
+    <ImageView
+        android:id="@+id/imgVisa"
+        android:layout_width="50dp"
+        android:layout_height="16dp"
+        android:src="@drawable/ic_visa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
