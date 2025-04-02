@@ -110,7 +110,6 @@ class CardsFragment : BaseFragment<FragmentCardsBinding>() {
                     )
                 )
             ) // Set cards overlap
-            setupItemTouchHelper(this)
         }
 
         binding.layoutCards.btnAdd.clickWithTrigger {
@@ -123,28 +122,5 @@ class CardsFragment : BaseFragment<FragmentCardsBinding>() {
             .setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left)
             .replace(R.id.fragmentContainer, AddCardFragment())
             .addToBackStack(null).commit()
-    }
-
-    private fun setupItemTouchHelper(view: RecyclerView) {
-        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
-            ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0
-        ) {
-
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                val fromPosition = viewHolder.adapterPosition
-                val toPosition = target.adapterPosition
-                cardAdapter?.swapItems(fromPosition, toPosition)
-                return true
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-
-            }
-        })
-        itemTouchHelper.attachToRecyclerView(view)
     }
 }
