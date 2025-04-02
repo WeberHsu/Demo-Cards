@@ -25,8 +25,7 @@ A demo cards app using Hilt based on modern Android tech-stacks and MVVM archite
   -  _data_: It contains Repositories implementation, the Room Entities for persistence. If there is an API request requirement, there are also the data source Api implementations and the corresponding api-specific models.
   - _lib-base_: The library for base usage utilities.
 
-- **Gradle Management** with Version Catalogs enable you to add and maintain dependencies and plugins in a scalable way. 
-
+- **Gradle Management** with Version Catalogs enable you to add and maintain dependencies and plugins in a scalable way.
 
 ## Tech stack & Open-source libraries
 - 100% [Kotlin](https://kotlinlang.org/) based + [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) for asynchronous.
@@ -42,3 +41,10 @@ A demo cards app using Hilt based on modern Android tech-stacks and MVVM archite
 <p>
 <img src="graphics/clean_architecture_android.png" width="500"/>
 </p>
+
+- Communication between layers :
+  - UI calls method from ViewModel.
+  - ViewModel executes Use case.
+  - Use case combines data from Repository.
+  - Repository returns data from a Data Source (Cached or Remote).
+  - Information flows back to the UI.
