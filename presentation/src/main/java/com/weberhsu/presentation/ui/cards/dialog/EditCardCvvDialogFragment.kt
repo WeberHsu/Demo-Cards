@@ -13,6 +13,7 @@ import com.weberhsu.presentation.extensions.gone
 import com.weberhsu.presentation.extensions.hideSoftKeyboard
 import com.weberhsu.presentation.extensions.showSoftKeyboard
 import com.weberhsu.presentation.extensions.visible
+import com.weberhsu.presentation.ui.cards.widget.CardCvvInput
 import com.weberhsu.presentation.widget.dialog.BaseCenterVerticalDialogFragment
 
 class EditCardCvvDialogFragment : BaseCenterVerticalDialogFragment() {
@@ -40,12 +41,17 @@ class EditCardCvvDialogFragment : BaseCenterVerticalDialogFragment() {
         arguments?.getParcelable<CardEntity>(KEY_CARD_DATA)?.let {
             binding?.inputEdit?.run {
                 setInputText(it.cvv)
+                onAfterTextChanged = {
+                    checkCvvFieldValid(this)
+                }
                 getEtInputContentView().setOnEditorActionListener { _, actionId, event ->
                     if (actionId == EditorInfo.IME_ACTION_DONE ||
                         (event?.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN)) {
-                        listener.invoke(getInputText())
-                        hideSoftKeyboard()
-                        dismissAllowingStateLoss()
+                        if (checkCvvFieldValid(this)) {
+                            listener.invoke(getInputText())
+                            hideSoftKeyboard()
+                            dismissAllowingStateLoss()
+                        }
                         true
                     } else {
                         false
@@ -58,5 +64,20 @@ class EditCardCvvDialogFragment : BaseCenterVerticalDialogFragment() {
 
     override fun work(savedInstanceState: Bundle?) {
 
+    }
+
+    private fun checkCvvFieldValid(input: CardCvvInput): Boolean {
+        if (input.getInputText().isEmpty() || !input.isValid) {
+            input.setShowErrorTip(true)
+            if (!input.isValid && input.getInputText().isNotEmpty()) {
+                input.showErrorStatus("The field is invalid")
+            } else {
+                input.showErrorStatus(getString(R.string.field_required))
+            }
+            return false
+        } else {
+            input.setShowErrorTip(false)
+            return true
+        }
     }
 }
