@@ -93,4 +93,16 @@ class CardDetailViewModel @Inject constructor(
             }
         }
     }
+
+    fun isFavorite(id: String, isFavorite: Boolean) {
+        viewModelScope.launch {
+            runCatching {
+                useCase.setFavorite(id, isFavorite)
+            }.onSuccess {
+                _updateSuccess.value = true
+            }.onFailure {
+                handleErrorMsg(it)
+            }
+        }
+    }
 }

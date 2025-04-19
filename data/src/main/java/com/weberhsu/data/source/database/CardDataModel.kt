@@ -7,5 +7,7 @@ data class CardDataModel(
     val cardNumber: String,
     val expiryMonth: String,
     val expiryYear: String,
-    val cvv: String
+    val cvv: String,
+    val sort: Int,
+    val isFavorite: Boolean
 )

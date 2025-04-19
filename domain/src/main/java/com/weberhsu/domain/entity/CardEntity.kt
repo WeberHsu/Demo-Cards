@@ -11,7 +11,9 @@ data class CardEntity(
     var cardNumber: String,
     var expiryMonth: String,
     var expiryYear: String,
-    var cvv: String
+    var cvv: String,
+    var sort: Int = 0,
+    var isFavorite: Boolean = false
 ) : Parcelable {
     fun getExpiryDateString(): String = "$expiryMonth/$expiryYear"
 

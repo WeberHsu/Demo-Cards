@@ -47,4 +47,12 @@ class CryptoRepositoryImpl @Inject constructor(
     override suspend fun updateCardUserName(id: String, name: String) {
         localDataSource.updateCardUserName(id, name)
     }
+
+    override suspend fun updateCardIsFavorite(id: String, isFavorite: Boolean) {
+        localDataSource.updateCardIsFavorite(id, isFavorite)
+    }
+
+    override suspend fun updateCards(cards: List<CardEntity>) {
+        localDataSource.updateCards(cardMapper.toList(cards))
+    }
 }

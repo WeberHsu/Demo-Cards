@@ -24,4 +24,8 @@ interface CardRepository {
     suspend fun updateCardCvv(id: String, cvv: String)
 
     suspend fun updateCardUserName(id: String, name: String)
+
+    suspend fun updateCardIsFavorite(id: String, isFavorite: Boolean)
+
+    suspend fun updateCards(cards: List<CardEntity>)
 }

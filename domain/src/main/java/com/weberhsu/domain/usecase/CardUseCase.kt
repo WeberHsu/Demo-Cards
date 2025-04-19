@@ -47,4 +47,12 @@ class CardUseCase @Inject constructor(
     suspend fun updateCardUserName(id: String, name: String) {
         repo.updateCardUserName(id, name)
     }
+
+    suspend fun updateCards(cards: List<CardEntity>) {
+        repo.updateCards(cards)
+    }
+
+    suspend fun setFavorite(id: String, isFavorite: Boolean) {
+        repo.updateCardIsFavorite(id, isFavorite)
+    }
 }

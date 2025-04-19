@@ -16,7 +16,7 @@ class CardAdapter : RecyclerView.Adapter<CardAdapter.Companion.CardViewHolder>()
         class CardViewHolder(view: View) : RecyclerView.ViewHolder(view)
     }
 
-    private var cards: MutableList<CardEntity> = mutableListOf()
+    var cards: MutableList<CardEntity> = mutableListOf()
     var cardItemClickListener: CardsItemCallback? = null
 
     fun refreshData(data: MutableList<CardEntity>) {

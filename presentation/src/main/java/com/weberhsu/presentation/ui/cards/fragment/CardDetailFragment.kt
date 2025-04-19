@@ -1,8 +1,11 @@
 package com.weberhsu.presentation.ui.cards.fragment
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.setFragmentResult
@@ -44,6 +47,7 @@ class CardDetailFragment : BaseFragment<FragmentCardDetailBinding>() {
     }
 
     private lateinit var viewModel: CardDetailViewModel
+    var isFavorite = false
 
     override val bindLayout: (LayoutInflater, ViewGroup?, Boolean) -> FragmentCardDetailBinding
         get() = FragmentCardDetailBinding::inflate
@@ -64,6 +68,9 @@ class CardDetailFragment : BaseFragment<FragmentCardDetailBinding>() {
         )
 
         arguments?.getParcelable<CardEntity>(KEY_CARD_DATA)?.let { card ->
+            isFavorite = card.isFavorite
+            binding.btnFavorite.isSelected = isFavorite
+
             binding.txtCardName.run {
                 text = card.cardName
                 setOnLongClickListener {
@@ -158,6 +165,26 @@ class CardDetailFragment : BaseFragment<FragmentCardDetailBinding>() {
 
             binding.imgNameOnCardCopy.clickWithTrigger {
                 Utils.copyToClipboardWithCheck(requireContext(), binding.txtNameOnCard.text)
+            }
+
+            binding.btnFavorite.clickWithTrigger {
+                isFavorite = !isFavorite
+                binding.btnFavorite.isSelected = isFavorite
+
+                val scaleUpX = ObjectAnimator.ofFloat(binding.btnFavorite, "scaleX", 1f, 1.3f)
+                val scaleUpY = ObjectAnimator.ofFloat(binding.btnFavorite, "scaleY", 1f, 1.3f)
+                val scaleDownX = ObjectAnimator.ofFloat(binding.btnFavorite, "scaleX", 1.3f, 1f)
+                val scaleDownY = ObjectAnimator.ofFloat(binding.btnFavorite, "scaleY", 1.3f, 1f)
+
+                AnimatorSet().apply {
+                    play(scaleUpX).with(scaleUpY)
+                    play(scaleDownX).with(scaleDownY).after(scaleUpX)
+                    duration = 150
+                    interpolator = AccelerateDecelerateInterpolator()
+                    start()
+                }
+
+                viewModel.isFavorite(card.id.orEmpty(), isFavorite)
             }
         }
 

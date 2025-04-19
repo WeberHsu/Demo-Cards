@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import androidx.room.Update
 import com.weberhsu.data.source.database.model.CardLocalModel
 
 @Dao
@@ -19,7 +20,7 @@ interface CardItemDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCard(card: CardLocalModel)
 
-    @Query("SELECT * FROM cards")
+    @Query("SELECT * FROM cards ORDER BY `sort` ASC")
     suspend fun getAllCards(): List<CardLocalModel>
 
     @Query("UPDATE cards SET cardName = :name WHERE id = :id")
@@ -36,4 +37,10 @@ interface CardItemDao {
 
     @Query("UPDATE cards SET userName = :name WHERE id = :id")
     suspend fun updateCardUserName(id: String, name: String?)
+
+    @Query("UPDATE cards SET isFavorite = :isFavorite WHERE id = :id")
+    suspend fun updateCardIsFavorite(id: String, isFavorite: Boolean)
+
+    @Update
+    suspend fun updateCards(cards: List<CardLocalModel>)
 }

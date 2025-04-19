@@ -15,6 +15,7 @@ class CardsViewModel @Inject constructor(
 ): BaseViewModel() {
 
     val event = SingleLiveEvent<List<CardEntity>>()
+    private var originCards: List<CardEntity> = emptyList()
 
     fun getCards() {
         viewModelScope.launch {
@@ -22,8 +23,40 @@ class CardsViewModel @Inject constructor(
                 useCase.getAllCard()
             }.onSuccess {
                 event.value = useCase.getAllCard()
+                originCards = event.value.orEmpty()
             }.onFailure {
                 handleErrorMsg(it)
+            }
+        }
+    }
+
+    private fun getUpdatedCards(
+        originalList: List<CardEntity>,
+        newList: List<CardEntity>
+    ): List<CardEntity> {
+        return newList.mapIndexedNotNull { newIndex, card ->
+            // 無論原來 sort 為何，只要與新位置 index 不一致，就要更新
+            if (card.sort != newIndex) {
+                card.copy(sort = newIndex)
+            } else {
+                null
+            }
+        }
+    }
+
+    fun updateSorts(data: List<CardEntity>) {
+        getUpdatedCards(originCards, data).run {
+            if (this.isNotEmpty()) {
+                // changed
+                viewModelScope.launch {
+                    runCatching {
+                        useCase.updateCards(this@run)
+                    }.onSuccess {
+                        originCards = data
+                    }.onFailure {
+                        handleErrorMsg(it)
+                    }
+                }
             }
         }
     }

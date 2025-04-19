@@ -51,4 +51,12 @@ class LocalCardDataSourceImpl @Inject constructor(
         cardDao.updateCardUserName(id, name)
     }
 
+    override suspend fun updateCardIsFavorite(id: String, isFavorite: Boolean) {
+        cardDao.updateCardIsFavorite(id, isFavorite)
+    }
+
+    override suspend fun updateCards(cards: List<CardDataModel>) {
+        cardDao.updateCards(cardMapper.toList(cards))
+    }
+
 }

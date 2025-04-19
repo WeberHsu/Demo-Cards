@@ -18,7 +18,9 @@ class CardLocalDataMapper @Inject constructor() : Mapper<CardLocalModel, CardDat
             cardNumber = i.cardNumber,
             expiryMonth = i.expiryMonth,
             expiryYear = i.expiryYear,
-            cvv = i.cvv
+            cvv = i.cvv,
+            isFavorite = i.isFavorite,
+            sort = i.sort
         )
     }
 
@@ -30,7 +32,9 @@ class CardLocalDataMapper @Inject constructor() : Mapper<CardLocalModel, CardDat
             cardNumber = o.cardNumber,
             expiryMonth = o.expiryMonth,
             expiryYear = o.expiryYear,
-            cvv = o.cvv
+            cvv = o.cvv,
+            isFavorite = o.isFavorite,
+            sort = o.sort
         )
     }
 }
