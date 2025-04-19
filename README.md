@@ -5,6 +5,8 @@ A demo cards app using Hilt based on modern Android tech-stacks and MVVM archite
 - A screen that displays a list of cards. (No Card & Many Cards)<br>
 - A form to add a new card with fields and validations for Card Name, Cardholder Name, Card Number, Expiration Date(MM/YY) and CVV Code <br>
 - A details screen to show the selected card’s information. You can edit fields with long click action or delete your card. <br>
+- Mark Card to favorite <br>
+- Reorder by dragging card <br>
 </p>
 
 ## Screenshots
